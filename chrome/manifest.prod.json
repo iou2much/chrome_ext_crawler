@@ -1,0 +1,29 @@
+{
+  "version": "0.1",
+  "name": "Aiya Business Helper",
+  "manifest_version": 2,
+  "description": "Tools for Alibaba",
+  "browser_action": {
+    "default_title": "Tools for Alibaba",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "img/icon-16.png",
+    "48": "img/icon-48.png",
+    "128": "img/icon-128.png"
+  },
+  "web_accessible_resources": [
+    "inject.html"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.alibaba.com/*","*://*.1688.com/*"],
+      "js": ["js/content_script.bundle.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["js/event_page.bundle.js"]
+  },
+  "permissions": [ "contextMenus","downloads", "tabs", "storage", "https://github.com/*" ],
+  "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src 'self' data:;font-src * 'unsafe-inline' 'self';"
+}
